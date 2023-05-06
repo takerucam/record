@@ -1,0 +1,68 @@
+{
+  "extends": [
+    "eslint:recommended", // ESLintによって推奨されるJSのルールを適用
+    "plugin:react/recommended", // Reactに関するルールを適用
+    "plugin:@typescript-eslint/recommended", // TypeScriptに関するルールを適用
+    "plugin:import/errors", // importに関するエラールールを適用
+    "plugin:import/warnings", // importに関する警告ルールを適用
+    "plugin:import/typescript", // importに関するTypeScriptのルールを適用
+    "plugin:jsx-a11y/recommended", // JSXの要素のaccessibilityに関するルールを適用
+    "plugin:react-hooks/recommended", // React Hooksに関するルールを適用
+    "plugin:tailwindcss/recommended", // Tailwind CSSに関するルールを適用
+    "next/core-web-vitals", // Next.jsに関するルールを適用
+    "next", // Next.jsに関するルールを適用
+    "prettier" // Prettierに関するルールを適用
+  ],
+  "plugins": [
+    "@typescript-eslint",
+    "react",
+    "react-hooks",
+    "jsx-a11y",
+    "import",
+    "tailwindcss"
+  ],
+  "env": { // ESLintが対象とする環境を指定
+    "browser": true, // ブラウザのグローバル変数を有効にする
+    "es2021": true, // ES2021の構文を有効にする
+    "node": true // Node.jsのグローバル変数を有効にする
+  },
+  "parser": "@typescript-eslint/parser", // ESLintがTypeScriptを解釈するためのパーサーを指定
+  "parserOptions": { // ESLintがTypeScriptを解釈するためのパーサーに渡すオプションを指定
+    "ecmaFeatures": { // ECMAScriptの機能を指定
+      "jsx": true // JSXを有効にする
+    },
+    "ecmaVersion": 2021, // ECMAScriptのバージョンを指定
+    "sourceType": "module" // ECMAScriptのモジュールを指定
+  },
+  "settings": { // 各種モジュールの設定を指定
+    "react": { // Reactの設定を指定
+      "version": "detect" // Reactのバージョンを自動検出する
+    }
+  },
+  "rules": {
+    "react/react-in-jsx-scope": "off", // Reactのimportエラーを回避する
+    "react/prop-types": "off", // TypeScriptの型定義を使用するため、prop-typesを無効化する
+    "import/no-unresolved": "error", // importのパスが間違っている場合はエラーを出す
+    "import/order": [
+      "error", // importの順序に関するエラールールを適用
+      {
+        "groups": [
+          "builtin", // Node.jsのモジュール
+          "external", // 外部モジュール
+          "internal", // 内部モジュール
+          "parent", // 親ディレクトリのモジュール
+          "sibling", // 同じディレクトリのモジュール
+          "index" // indexディレクトリのモジュール
+        ],
+        "newlines-between": "always", // グループ間には常に改行を入れる
+        "alphabetize": {
+          "order": "asc", // アルファベット順にソートする
+          "caseInsensitive": true // 大文字小文字を区別しない
+        }
+      }
+    ],
+    "comma-dangle": ["error", "always-multiline"], // オブジェクトの末尾にカンマをつける
+    "array-element-newline": ["error", "always"], // 配列の要素ごとに改行する
+    "tailwindcss/classnames-order": "warn" // Tailwind CSSのクラス名の順序に関する警告ルールを適用
+  }
+}
