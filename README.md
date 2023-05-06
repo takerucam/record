@@ -1,18 +1,18 @@
 # 使用技術
-## Frontend
+### Frontend
 - Next.js
 
-## Style
-
+### Style
 - TailwindCSS
-## Backend
+
+### Backend
 - Supabase
 
-## DB
+### DB
 - Supabase
 
-## 認証
+### 認証
 - Supabase Auth
 
-## テスト
+### テスト
 - Jest
