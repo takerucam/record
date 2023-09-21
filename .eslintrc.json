@@ -15,10 +15,10 @@
       "ignoreMemberSort": false,
       "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
     }],
-    "import/order": ["error", {"alphabetize": {"order": "asc"} }],
+    // "import/order": ["error", {"alphabetize": {"order": "asc"} }],
     "no-unused-vars": "warn",
-    "array-element-newline": ["error", "always"] // 配列の要素ごとに改行する
-
+    // "array-element-newline": ["error", "always"], // 配列の要素ごとに改行する
+    "tailwindcss/no-custom-classname": "off"
   },
   "settings": {
     "tailwindcss": {
