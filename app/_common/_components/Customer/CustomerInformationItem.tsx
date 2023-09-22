@@ -5,7 +5,12 @@ type Props = {
   style?: string
 }
 
-export default function ClientCard({ title, text, bgColor, style }: Props) {
+export default function CustomerInformationItem({
+  title,
+  text,
+  bgColor,
+  style,
+}: Props) {
   return (
     <div
       className={`${bgColor} w-[540px] pl-4 pt-4 ${style} min-h-[112px] rounded-xl`}

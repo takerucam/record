@@ -1,9 +1,9 @@
 import BaseLayout from '@/app/_common/_components/BaseLayout'
-import ClientProfile from '@/app/_common/_components/ClientProfile'
+import CustomerInformation from '@/app/_common/_components/CustomerInformation'
 import RecordCardList from '@/app/_common/_components/Record/RecordCardList'
 import CustomerListBody from '@/app/_components/CustomerListBody'
 
-export default function ClientProfilePage({
+export default function CustomerInformationRootPage({
   params,
 }: {
   params: { id: string }
@@ -13,7 +13,7 @@ export default function ClientProfilePage({
     <main className="bg-cyan1 h-screen">
       <BaseLayout
         recordCardList={<RecordCardList body={body} />}
-        clientProfile={<ClientProfile id={params.id} />}
+        customerInformation={<CustomerInformation id={params.id} />}
       />
     </main>
   )

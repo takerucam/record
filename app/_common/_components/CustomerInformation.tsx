@@ -1,5 +1,5 @@
 import CircleButton from '@/app/_common/_components/CircleButton'
-import ClientCard from '@/app/_common/_components/Client/ClientCard'
+import CustomerInformationItem from '@/app/_common/_components/Customer/CustomerInformationItem'
 import { Database } from '@/libs/database.types'
 import PersonEdit from '@/public/icons/person_edit.svg'
 import Link from 'next/link'
@@ -21,7 +21,7 @@ async function fetchCustomerInfo(id?: string) {
   return data[0]
 }
 
-export default async function ClientProfile({ id }: { id?: string }) {
+export default async function CustomerInformation({ id }: { id?: string }) {
   const customerInfo = await fetchCustomerInfo(id)
   if (!customerInfo) return null
   return (
@@ -32,25 +32,25 @@ export default async function ClientProfile({ id }: { id?: string }) {
           bgColor="bg-cyan9"
         />
       </div>
-      <ClientCard
+      <CustomerInformationItem
         title="名前"
         text={`${customerInfo ? customerInfo.name + ' 様' : ''} `}
         bgColor="bg-cyan2"
         style="mb-4"
       />
-      <ClientCard
+      <CustomerInformationItem
         title="連絡先"
         text={customerInfo?.number?.toString() ?? ''}
         bgColor="bg-cyan4"
         style="mb-4"
       />
-      <ClientCard
+      <CustomerInformationItem
         title="住所"
         text={customerInfo?.address ?? ''}
         bgColor="bg-cyan2"
         style="mb-4"
       />
-      <ClientCard
+      <CustomerInformationItem
         title="メモ"
         text={customerInfo?.memo ?? ''}
         bgColor="bg-cyan4"

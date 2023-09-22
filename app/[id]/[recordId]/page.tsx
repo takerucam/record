@@ -36,7 +36,7 @@ export default async function RecordPage({
     <main className="bg-cyan1 h-screen">
       <BaseLayout
         recordCardList={<RecordCardList body={body} />}
-        clientProfile={<RecordInformation recordId={params.recordId} />}
+        customerInformation={<RecordInformation recordId={params.recordId} />}
       />
     </main>
   )

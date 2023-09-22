@@ -1,14 +1,14 @@
 export default function BaseLayout({
   recordCardList,
-  clientProfile,
+  customerInformation,
 }: {
   recordCardList: React.ReactNode
-  clientProfile: React.ReactNode
+  customerInformation: React.ReactNode
 }) {
   return (
     <div className="flex overflow-hidden">
       <div>{recordCardList}</div>
-      <div className="grow">{clientProfile}</div>
+      <div className="grow">{customerInformation}</div>
     </div>
   )
 }
