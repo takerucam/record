@@ -1,5 +1,5 @@
-import BaseLayout from '@/app/_common/_components/BaseLayout'
-import RecordCardList from '@/app/_common/_components/Record/RecordCardList'
+import BaseLayout from '@/app/_components/BaseLayout'
+import RecordCardList from '@/app/_components/Record/RecordCardList'
 import RecordInformation from '@/app/[id]/_components/RecordInformation'
 import RecordListBody from '@/app/[id]/_components/RecordListBody'
 import { Database } from '@/libs/database.types'

@@ -1,4 +1,4 @@
-import SupabaseListener from '@/app/_common/_components/Supabase/SupabaseListener'
+import SupabaseListener from '@/app/_components/Supabase/SupabaseListener'
 import { Database } from '@/libs/database.types'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'

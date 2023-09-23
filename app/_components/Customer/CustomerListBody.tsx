@@ -1,4 +1,4 @@
-import CustomerCard from '@/app/_components/CustomerCard'
+import CustomerCard from '@/app/_components/Customer/CustomerCard'
 import { Database } from '@/libs/database.types'
 import dayjs from 'dayjs'
 

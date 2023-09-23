@@ -1,6 +1,6 @@
-import CircleButton from '@/app/_common/_components/CircleButton'
-import RecordListFooter from '@/app/_common/_components/Record/RecordListFooter'
-import RecordListHeader from '@/app/_common/_components/Record/RecordListHeader'
+import CircleButton from '@/app/_components/CircleButton'
+import RecordListFooter from '@/app/_components/Record/RecordListFooter'
+import RecordListHeader from '@/app/_components/Record/RecordListHeader'
 import PersonAdd from '@/public/icons/person_add.svg'
 
 export default function RecordCardList({ body }: { body: React.ReactNode }) {

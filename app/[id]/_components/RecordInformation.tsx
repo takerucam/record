@@ -1,4 +1,4 @@
-import CircleButton from '@/app/_common/_components/CircleButton'
+import CircleButton from '@/app/_components/CircleButton'
 import RecordInformationTable from '@/app/[id]/_components/RecordInformationTable'
 import PersonEdit from '@/public/icons/person_edit.svg'
 

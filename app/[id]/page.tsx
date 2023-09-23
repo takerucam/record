@@ -1,7 +1,7 @@
-import BaseLayout from '@/app/_common/_components/BaseLayout'
-import CustomerInformation from '@/app/_common/_components/CustomerInformation'
-import RecordCardList from '@/app/_common/_components/Record/RecordCardList'
-import CustomerListBody from '@/app/_components/CustomerListBody'
+import BaseLayout from '@/app/_components/BaseLayout'
+import CustomerListBody from '@/app/_components/Customer/CustomerListBody'
+import CustomerInformation from '@/app/_components/CustomerInformation'
+import RecordCardList from '@/app/_components/Record/RecordCardList'
 
 export default function CustomerInformationPage({
   params,
