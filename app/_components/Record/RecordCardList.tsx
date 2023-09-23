@@ -1,4 +1,4 @@
-import CircleButton from '@/app/_components/CircleButton'
+import CircleButton from '@/app/_components/common/CircleButton'
 import RecordListFooter from '@/app/_components/Record/RecordListFooter'
 import RecordListHeader from '@/app/_components/Record/RecordListHeader'
 import PersonAdd from '@/public/icons/person_add.svg'

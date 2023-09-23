@@ -1,6 +1,6 @@
-import BaseLayout from '@/app/_components/BaseLayout'
+import BaseLayout from '@/app/_components/common/BaseLayout'
+import CustomerInformation from '@/app/_components/Customer/CustomerInformation'
 import CustomerListBody from '@/app/_components/Customer/CustomerListBody'
-import CustomerInformation from '@/app/_components/CustomerInformation'
 import RecordCardList from '@/app/_components/Record/RecordCardList'
 
 export default function CustomerInformationPage({

@@ -1,4 +1,4 @@
-import BaseLayout from '@/app/_components/BaseLayout'
+import BaseLayout from '@/app/_components/common/BaseLayout'
 import RecordCardList from '@/app/_components/Record/RecordCardList'
 import RecordInformation from '@/app/[id]/_components/RecordInformation'
 import RecordListBody from '@/app/[id]/_components/RecordListBody'

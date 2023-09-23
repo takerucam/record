@@ -1,4 +1,4 @@
-import CircleButton from '@/app/_components/CircleButton'
+import CircleButton from '@/app/_components/common/CircleButton'
 import CustomerInformationItem from '@/app/_components/Customer/CustomerInformationItem'
 import { Database } from '@/libs/database.types'
 import PersonEdit from '@/public/icons/person_edit.svg'
