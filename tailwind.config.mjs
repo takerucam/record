@@ -35,7 +35,7 @@ module.exports = {
         'grass3': '#EBF9EB',
         'grass4': '#DFF3DF',
         'grass5': '#CEEBCF',
-        'grass7': '#97CF9',
+        'grass7': '#97CF9C',
         'grass8': '#65BA75',
         'grass9': '#46A758',
       },
