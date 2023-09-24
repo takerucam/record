@@ -3,7 +3,7 @@ export default function BaseLayout({
   customerInformation,
 }: {
   recordCardList: React.ReactNode
-  customerInformation: React.ReactNode
+  customerInformation?: React.ReactNode
 }) {
   return (
     <div className="flex overflow-hidden">
