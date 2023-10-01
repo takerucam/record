@@ -1,7 +1,7 @@
 import CircleButton from '@/app/_components/common/CircleButton'
 import RecordListFooter from '@/app/_components/Record/RecordListFooter'
 import RecordListHeader from '@/app/_components/Record/RecordListHeader'
-import ShoppingCartAdd from '@/public/icons/shopping_cart_add.svg'
+import Add from '@/public/icons/add.svg'
 
 export default function ShoppingCardList({ body }: { body: React.ReactNode }) {
   return (
@@ -10,7 +10,7 @@ export default function ShoppingCardList({ body }: { body: React.ReactNode }) {
       {body}
       <div className="absolute bottom-[87px] right-2">
         <CircleButton
-          svg={<ShoppingCartAdd width={32} height={32} fill="#FFFFFF" />}
+          svg={<Add width={32} height={32} fill="#FFFFFF" />}
           bgColor="bg-grass9"
         />
       </div>

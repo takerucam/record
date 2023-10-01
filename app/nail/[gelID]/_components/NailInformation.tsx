@@ -1,7 +1,7 @@
 import CircleButton from '@/app/_components/common/CircleButton'
 import NailInformationItem from '@/app/nail/[gelID]/_components/NailInformationItem'
 import { Database } from '@/libs/database.types'
-import HandEdit from '@/public/icons/hand_edit.svg'
+import Edit from '@/public/icons/edit.svg'
 
 type GelType = Database['public']['Tables']['GelTypes']['Row']
 
@@ -27,7 +27,7 @@ export default async function NailInformation({ id }: { id?: string }) {
     <div className="relative h-full w-full pl-8 pt-16">
       <div className="absolute bottom-[88px] right-4">
         <CircleButton
-          svg={<HandEdit width={32} height={32} fill="#FFFFFF" />}
+          svg={<Edit width={32} height={32} fill="#FFFFFF" />}
           bgColor="bg-pink9"
         />
       </div>

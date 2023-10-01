@@ -1,7 +1,7 @@
 import CircleButton from '@/app/_components/common/CircleButton'
 import CustomerInformationItem from '@/app/_components/Customer/CustomerInformationItem'
 import { Database } from '@/libs/database.types'
-import PersonEdit from '@/public/icons/person_edit.svg'
+import Edit from '@/public/icons/edit.svg'
 import Link from 'next/link'
 
 type CustomerList = Database['public']['Tables']['CustomerList']['Row']
@@ -28,7 +28,7 @@ export default async function CustomerInformation({ id }: { id?: string }) {
     <div className="relative h-full w-full pl-8 pt-16">
       <div className="absolute bottom-[88px] right-4">
         <CircleButton
-          svg={<PersonEdit width={32} height={32} fill="#FFFFFF" />}
+          svg={<Edit width={32} height={32} fill="#FFFFFF" />}
           bgColor="bg-cyan9"
         />
       </div>

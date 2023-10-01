@@ -1,7 +1,7 @@
 import CircleButton from '@/app/_components/common/CircleButton'
 import NailInformationItem from '@/app/nail/[gelID]/_components/NailInformationItem'
 import { Database } from '@/libs/database.types'
-import ShoppingCartEdit from '@/public/icons/shopping_cart_edit.svg'
+import Edit from '@/public/icons/edit.svg'
 
 type Merchandise = Database['public']['Tables']['Merchandise']['Row']
 
@@ -27,7 +27,7 @@ export default async function ShoppingInformation({ id }: { id?: string }) {
     <div className="relative h-full w-full pl-8 pt-16">
       <div className="absolute bottom-[88px] right-4">
         <CircleButton
-          svg={<ShoppingCartEdit width={32} height={32} fill="#FFFFFF" />}
+          svg={<Edit width={32} height={32} fill="#FFFFFF" />}
           bgColor="bg-grass9"
         />
       </div>
