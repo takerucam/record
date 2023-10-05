@@ -1,3 +1,5 @@
+import { ColorSchemeScript, MantineProvider } from '@mantine/core'
+import '@mantine/core/styles.css'
 import 'app/globals.css'
 
 export const dynamic = 'force-dynamic'
@@ -14,7 +16,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <body>{children}</body>
+      <head>
+        <ColorSchemeScript />
+      </head>
+      <body>
+        <MantineProvider>{children}</MantineProvider>
+      </body>
     </html>
   )
 }

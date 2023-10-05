@@ -4,7 +4,7 @@ export default function ShoppingCard({
   shoppingId,
   name,
 }: {
-  shoppingId: number
+  shoppingId: string
   name: string
 }) {
   return (

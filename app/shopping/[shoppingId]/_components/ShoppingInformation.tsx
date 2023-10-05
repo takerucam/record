@@ -2,26 +2,18 @@ import CircleButton from '@/app/_components/common/CircleButton'
 import NailInformationItem from '@/app/nail/[gelID]/_components/NailInformationItem'
 import { Database } from '@/libs/database.types'
 import Edit from '@/public/icons/edit.svg'
-
-type Merchandise = Database['public']['Tables']['Merchandise']['Row']
-
-async function merchandiseInfo(id?: string) {
-  if (!id) return undefined
-  const res = await fetch(
-    `${process.env.SUPABASE_URL}/rest/v1/Merchandise?merchandise_id=eq.${id}`,
-    {
-      headers: new Headers({
-        apikey: String(process.env.SUPABASE_API_KEY),
-      }),
-    }
-  )
-
-  const data: Merchandise[] = await res.json()
-  return data[0]
-}
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import { cookies } from 'next/headers'
 
 export default async function ShoppingInformation({ id }: { id?: string }) {
-  const merchandise = await merchandiseInfo(id)
+  const supabase = createServerComponentClient<Database>({
+    cookies,
+  })
+
+  const { data: merchandise } = await supabase
+    .from('Merchandise')
+    .select()
+    .eq('id', id ?? '')
   if (!merchandise) return null
   return (
     <div className="relative h-full w-full pl-8 pt-16">
@@ -33,13 +25,13 @@ export default async function ShoppingInformation({ id }: { id?: string }) {
       </div>
       <NailInformationItem
         title="商品名"
-        text={`${merchandise ? merchandise.name : ''} `}
+        text={`${merchandise ? merchandise[0].name : ''} `}
         bgColor="bg-grass2"
         style="mb-4"
       />
       <NailInformationItem
         title="価格"
-        text={merchandise.price?.toString() ?? ''}
+        text={merchandise[0].price?.toString() ?? ''}
         bgColor="bg-grass4"
         style="mb-4"
       />

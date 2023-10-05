@@ -2,27 +2,18 @@ import CircleButton from '@/app/_components/common/CircleButton'
 import NailInformationItem from '@/app/nail/[gelID]/_components/NailInformationItem'
 import { Database } from '@/libs/database.types'
 import Edit from '@/public/icons/edit.svg'
-
-type GelType = Database['public']['Tables']['GelTypes']['Row']
-
-async function gelTypeInfo(id?: string) {
-  if (!id) return undefined
-  const res = await fetch(
-    `${process.env.SUPABASE_URL}/rest/v1/GelTypes?gel_id=eq.${id}`,
-    {
-      headers: new Headers({
-        apikey: String(process.env.SUPABASE_API_KEY),
-      }),
-    }
-  )
-
-  const data: GelType[] = await res.json()
-  return data[0]
-}
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import { cookies } from 'next/headers'
 
 export default async function NailInformation({ id }: { id?: string }) {
-  const gelType = await gelTypeInfo(id)
-  if (!gelType) return null
+  const supabase = createServerComponentClient<Database>({
+    cookies,
+  })
+  const { data: gelTypes } = await supabase
+    .from('GelTypes')
+    .select()
+    .eq('id', id ?? '')
+  if (!gelTypes) return null
   return (
     <div className="relative h-full w-full pl-8 pt-16">
       <div className="absolute bottom-[88px] right-4">
@@ -33,13 +24,13 @@ export default async function NailInformation({ id }: { id?: string }) {
       </div>
       <NailInformationItem
         title="ジェル名"
-        text={`${gelType ? gelType.name : ''} `}
+        text={`${gelTypes ? gelTypes[0].name : ''} `}
         bgColor="bg-pink2"
         style="mb-4"
       />
       <NailInformationItem
         title="価格"
-        text={gelType.price?.toString() ?? ''}
+        text={gelTypes[0].price?.toString() ?? ''}
         bgColor="bg-pink4"
         style="mb-4"
       />

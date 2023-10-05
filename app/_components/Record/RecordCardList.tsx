@@ -1,7 +1,6 @@
-import CircleButton from '@/app/_components/common/CircleButton'
 import RecordListFooter from '@/app/_components/Record/RecordListFooter'
 import RecordListHeader from '@/app/_components/Record/RecordListHeader'
-import Add from '@/public/icons/add.svg'
+import AddCustomerButton from '@/app/[id]/_components/AddCustomerButton'
 
 export default function RecordCardList({ body }: { body: React.ReactNode }) {
   return (
@@ -9,10 +8,7 @@ export default function RecordCardList({ body }: { body: React.ReactNode }) {
       <RecordListHeader />
       {body}
       <div className="absolute bottom-[87px] right-2">
-        <CircleButton
-          svg={<Add width={32} height={32} fill="#FFFFFF" />}
-          bgColor="bg-cyan9"
-        />
+        <AddCustomerButton />
       </div>
       <RecordListFooter />
     </div>

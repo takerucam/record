@@ -3,40 +3,34 @@ import RecordCardList from '@/app/_components/Record/RecordCardList'
 import RecordInformation from '@/app/[id]/_components/RecordInformation'
 import RecordListBody from '@/app/[id]/_components/RecordListBody'
 import { Database } from '@/libs/database.types'
-
-type CustomerList = Database['public']['Tables']['CustomerList']['Row']
-
-async function fetchCustomerInfo(id: string) {
-  const res = await fetch(
-    `${process.env.SUPABASE_URL}/rest/v1/CustomerList?customer_id=eq.${id}`,
-    {
-      headers: new Headers({
-        apikey: String(process.env.SUPABASE_API_KEY),
-      }),
-    }
-  )
-
-  if (!res.ok) {
-    throw new Error('Failed to fetch data in server')
-  }
-
-  const data: CustomerList[] = await res.json()
-  return data[0]
-}
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import { cookies } from 'next/headers'
 
 export default async function RecordPage({
   params,
 }: {
   params: { id: string; recordId: string }
 }) {
-  const customerInfo = await fetchCustomerInfo(params.id)
-  const body = <RecordListBody user={customerInfo} />
+  const supabase = createServerComponentClient<Database>({
+    cookies,
+  })
+  const { data: customerInfo } = await supabase
+    .from('CustomerList')
+    .select()
+    .eq('id', params.id ?? '')
+  if (!customerInfo) return null
+  console.log(customerInfo)
+  const body = <RecordListBody user={customerInfo[0]} />
 
   return (
     <main className="bg-cyan1 h-screen">
       <BaseLayout
         recordCardList={<RecordCardList body={body} />}
-        customerInformation={<RecordInformation recordId={params.recordId} />}
+        customerInformation={
+          params.recordId == '0' ? null : (
+            <RecordInformation recordId={params.recordId} />
+          )
+        }
       />
     </main>
   )

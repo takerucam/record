@@ -2,27 +2,19 @@ import CircleButton from '@/app/_components/common/CircleButton'
 import CustomerInformationItem from '@/app/_components/Customer/CustomerInformationItem'
 import { Database } from '@/libs/database.types'
 import Edit from '@/public/icons/edit.svg'
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import { cookies } from 'next/headers'
 import Link from 'next/link'
 
-type CustomerList = Database['public']['Tables']['CustomerList']['Row']
-
-async function fetchCustomerInfo(id?: string) {
-  if (!id) return undefined
-  const res = await fetch(
-    `${process.env.SUPABASE_URL}/rest/v1/CustomerList?customer_id=eq.${id}`,
-    {
-      headers: new Headers({
-        apikey: String(process.env.SUPABASE_API_KEY),
-      }),
-    }
-  )
-
-  const data: CustomerList[] = await res.json()
-  return data[0]
-}
-
 export default async function CustomerInformation({ id }: { id?: string }) {
-  const customerInfo = await fetchCustomerInfo(id)
+  const supabase = createServerComponentClient<Database>({
+    cookies,
+  })
+  const { data: customerInfo } = await supabase
+    .from('CustomerList')
+    .select()
+    .eq('id', id ?? '')
+  console.log(id)
   if (!customerInfo) return null
   return (
     <div className="relative h-full w-full pl-8 pt-16">
@@ -34,25 +26,25 @@ export default async function CustomerInformation({ id }: { id?: string }) {
       </div>
       <CustomerInformationItem
         title="名前"
-        text={`${customerInfo ? customerInfo.name + ' 様' : ''} `}
+        text={`${customerInfo ? customerInfo[0].name + ' 様' : ''} `}
         bgColor="bg-cyan2"
         style="mb-4"
       />
       <CustomerInformationItem
         title="連絡先"
-        text={customerInfo?.number?.toString() ?? ''}
+        text={customerInfo[0]?.phone_number ?? ''}
         bgColor="bg-cyan4"
         style="mb-4"
       />
       <CustomerInformationItem
         title="住所"
-        text={customerInfo?.address ?? ''}
+        text={customerInfo[0]?.address ?? ''}
         bgColor="bg-cyan2"
         style="mb-4"
       />
       <CustomerInformationItem
         title="メモ"
-        text={customerInfo?.memo ?? ''}
+        text={customerInfo[0]?.memo ?? ''}
         bgColor="bg-cyan4"
       />
       {customerInfo ? (

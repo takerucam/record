@@ -4,7 +4,7 @@ export default function NailCard({
   gelId,
   name,
 }: {
-  gelId: number
+  gelId: string
   name: string
 }) {
   return (

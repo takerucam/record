@@ -4,7 +4,7 @@ export default function ColorCard({
   colorId,
   name,
 }: {
-  colorId: number
+  colorId: string
   name: string
 }) {
   return (

@@ -7,8 +7,8 @@ export default function RecordCard({
   date,
   isBirthday,
 }: {
-  customerId: number
-  id: number
+  customerId: string
+  id: string
   date: string
   isBirthday: boolean
 }) {

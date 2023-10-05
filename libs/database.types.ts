@@ -36,89 +36,117 @@ export interface Database {
     Tables: {
       ColorTypes: {
         Row: {
-          color_id: number
           created_at: string
+          id: string
           name: string
           price: number
+          user_id: string | null
         }
         Insert: {
-          color_id?: number
           created_at?: string
+          id?: string
           name: string
           price: number
+          user_id?: string | null
         }
         Update: {
-          color_id?: number
           created_at?: string
+          id?: string
           name?: string
           price?: number
-        }
-        Relationships: []
-      }
-      CustomerBaseGel: {
-        Row: {
-          base_gel_id: number | null
-          created_at: string | null
-          id: number
-          record_id: number | null
-        }
-        Insert: {
-          base_gel_id?: number | null
-          created_at?: string | null
-          id?: number
-          record_id?: number | null
-        }
-        Update: {
-          base_gel_id?: number | null
-          created_at?: string | null
-          id?: number
-          record_id?: number | null
+          user_id?: string | null
         }
         Relationships: [
           {
-            foreignKeyName: "CustomerBaseGel_base_gel_id_fkey"
-            columns: ["base_gel_id"]
+            foreignKeyName: "ColorTypes_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      CustomerBaseGel: {
+        Row: {
+          created_at: string
+          gel_id: string | null
+          id: string
+          record_id: string | null
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          gel_id?: string | null
+          id?: string
+          record_id?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          gel_id?: string | null
+          id?: string
+          record_id?: string | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "CustomerBaseGel_gel_id_fkey"
+            columns: ["gel_id"]
             referencedRelation: "GelTypes"
-            referencedColumns: ["gel_id"]
+            referencedColumns: ["id"]
           },
           {
             foreignKeyName: "CustomerBaseGel_record_id_fkey"
             columns: ["record_id"]
             referencedRelation: "CustomerRecordInformation"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "CustomerBaseGel_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
           }
         ]
       }
       CustomerColor: {
         Row: {
-          color_id: number | null
+          color_id: string | null
           created_at: string | null
-          id: number
-          record_id: number | null
+          id: string
+          record_id: string | null
+          user_id: string | null
         }
         Insert: {
-          color_id?: number | null
+          color_id?: string | null
           created_at?: string | null
-          id?: number
-          record_id?: number | null
+          id?: string
+          record_id?: string | null
+          user_id?: string | null
         }
         Update: {
-          color_id?: number | null
+          color_id?: string | null
           created_at?: string | null
-          id?: number
-          record_id?: number | null
+          id?: string
+          record_id?: string | null
+          user_id?: string | null
         }
         Relationships: [
           {
             foreignKeyName: "CustomerColor_color_id_fkey"
             columns: ["color_id"]
             referencedRelation: "ColorTypes"
-            referencedColumns: ["color_id"]
+            referencedColumns: ["id"]
           },
           {
             foreignKeyName: "CustomerColor_record_id_fkey"
             columns: ["record_id"]
             referencedRelation: "CustomerRecordInformation"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "CustomerColor_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
             referencedColumns: ["id"]
           }
         ]
@@ -128,42 +156,55 @@ export interface Database {
           address: string | null
           birthday: string | null
           created_at: string | null
-          customer_id: number
+          customer_id: number | null
+          id: string
           memo: string | null
-          name: string | null
-          number: number | null
+          name: string
+          phone_number: string | null
+          user_id: string | null
         }
         Insert: {
           address?: string | null
           birthday?: string | null
           created_at?: string | null
-          customer_id?: number
+          customer_id?: number | null
+          id?: string
           memo?: string | null
-          name?: string | null
-          number?: number | null
+          name: string
+          phone_number?: string | null
+          user_id?: string | null
         }
         Update: {
           address?: string | null
           birthday?: string | null
           created_at?: string | null
-          customer_id?: number
+          customer_id?: number | null
+          id?: string
           memo?: string | null
-          name?: string | null
-          number?: number | null
+          name?: string
+          phone_number?: string | null
+          user_id?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "CustomerList_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
       }
       CustomerRecordInformation: {
         Row: {
           conversation_content: string | null
           created_at: string | null
-          customer_id: number | null
+          customer_id: string | null
           cycle: number
           design_fee: number
           desired_design: string | null
           elapsed_time: number
           fill: number
-          id: number
+          id: string
           others: string | null
           previous_condition: string | null
           primer: boolean
@@ -177,13 +218,13 @@ export interface Database {
         Insert: {
           conversation_content?: string | null
           created_at?: string | null
-          customer_id?: number | null
+          customer_id?: string | null
           cycle: number
           design_fee: number
           desired_design?: string | null
           elapsed_time: number
           fill: number
-          id: number
+          id?: string
           others?: string | null
           previous_condition?: string | null
           primer: boolean
@@ -192,18 +233,18 @@ export interface Database {
           treatment_content?: string | null
           used_coupon: boolean
           user_id?: string | null
-          visit_date?: string
+          visit_date: string
         }
         Update: {
           conversation_content?: string | null
           created_at?: string | null
-          customer_id?: number | null
+          customer_id?: string | null
           cycle?: number
           design_fee?: number
           desired_design?: string | null
           elapsed_time?: number
           fill?: number
-          id?: number
+          id?: string
           others?: string | null
           previous_condition?: string | null
           primer?: boolean
@@ -226,52 +267,70 @@ export interface Database {
       CustomerTopGel: {
         Row: {
           created_at: string | null
-          id: number
-          record_id: number | null
-          top_gel_id: number | null
+          gel_id: string | null
+          id: string
+          record_id: string | null
+          user_id: string | null
         }
         Insert: {
           created_at?: string | null
-          id?: number
-          record_id?: number | null
-          top_gel_id?: number | null
+          gel_id?: string | null
+          id?: string
+          record_id?: string | null
+          user_id?: string | null
         }
         Update: {
           created_at?: string | null
-          id?: number
-          record_id?: number | null
-          top_gel_id?: number | null
+          gel_id?: string | null
+          id?: string
+          record_id?: string | null
+          user_id?: string | null
         }
         Relationships: [
           {
-            foreignKeyName: "CustomerTopGel_top_gel_id_fkey"
-            columns: ["top_gel_id"]
+            foreignKeyName: "CustomerTopGel_gel_id_fkey"
+            columns: ["gel_id"]
             referencedRelation: "GelTypes"
-            referencedColumns: ["gel_id"]
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "CustomerTopGel_record_id_fkey"
+            columns: ["record_id"]
+            referencedRelation: "CustomerRecordInformation"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "CustomerTopGel_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
           }
         ]
       }
       FingerInformation: {
         Row: {
           created_at: string | null
-          finger_name: string | null
-          id: number
+          finger_name: string
+          id: string
           nail_type: string | null
-          record_id: number | null
+          record_id: string | null
+          user_id: string | null
         }
         Insert: {
           created_at?: string | null
-          finger_name?: string | null
-          id?: number
+          finger_name: string
+          id?: string
           nail_type?: string | null
-          record_id?: number | null
+          record_id?: string | null
+          user_id?: string | null
         }
         Update: {
           created_at?: string | null
-          finger_name?: string | null
-          id?: number
+          finger_name?: string
+          id?: string
           nail_type?: string | null
-          record_id?: number | null
+          record_id?: string | null
+          user_id?: string | null
         }
         Relationships: [
           {
@@ -279,84 +338,119 @@ export interface Database {
             columns: ["record_id"]
             referencedRelation: "CustomerRecordInformation"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "FingerInformation_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
           }
         ]
       }
       GelTypes: {
         Row: {
-          created_at: string | null
-          gel_id: number
-          name: string | null
-          price: number | null
+          created_at: string
+          id: string
+          name: string
+          price: number
           target: string
+          user_id: string | null
         }
         Insert: {
-          created_at?: string | null
-          gel_id?: number
-          name?: string | null
-          price?: number | null
+          created_at?: string
+          id?: string
+          name: string
+          price: number
           target: string
+          user_id?: string | null
         }
         Update: {
-          created_at?: string | null
-          gel_id?: number
-          name?: string | null
-          price?: number | null
+          created_at?: string
+          id?: string
+          name?: string
+          price?: number
           target?: string
+          user_id?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "GelTypes_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
       }
       Merchandise: {
         Row: {
           created_at: string | null
-          merchandise_id: number
+          id: string
           name: string | null
           price: number | null
+          user_id: string | null
         }
         Insert: {
           created_at?: string | null
-          merchandise_id?: number
+          id?: string
           name?: string | null
           price?: number | null
+          user_id?: string | null
         }
         Update: {
           created_at?: string | null
-          merchandise_id?: number
+          id?: string
           name?: string | null
           price?: number | null
+          user_id?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "Merchandise_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
       }
       RecordMerchandise: {
         Row: {
           created_at: string | null
-          id: number
-          merchandise_id: number | null
-          record_id: number | null
+          id: string
+          merchandise_id: string | null
+          record_id: string | null
+          user_id: string | null
         }
         Insert: {
           created_at?: string | null
-          id?: number
-          merchandise_id?: number | null
-          record_id?: number | null
+          id?: string
+          merchandise_id?: string | null
+          record_id?: string | null
+          user_id?: string | null
         }
         Update: {
           created_at?: string | null
-          id?: number
-          merchandise_id?: number | null
-          record_id?: number | null
+          id?: string
+          merchandise_id?: string | null
+          record_id?: string | null
+          user_id?: string | null
         }
         Relationships: [
           {
             foreignKeyName: "RecordMerchandise_merchandise_id_fkey"
             columns: ["merchandise_id"]
             referencedRelation: "Merchandise"
-            referencedColumns: ["merchandise_id"]
+            referencedColumns: ["id"]
           },
           {
             foreignKeyName: "RecordMerchandise_record_id_fkey"
             columns: ["record_id"]
             referencedRelation: "CustomerRecordInformation"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "RecordMerchandise_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
             referencedColumns: ["id"]
           }
         ]

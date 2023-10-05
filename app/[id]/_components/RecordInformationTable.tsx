@@ -1,34 +1,22 @@
 import RecordInformationTableItem from '@/app/[id]/_components/RecordInformationTableItem'
 import { Database } from '@/libs/database.types'
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import dayjs from 'dayjs'
-
-type CustomerRecordInformation =
-  Database['public']['Tables']['CustomerRecordInformation']['Row']
-
-async function fetchCustomerInfo(recordId: string) {
-  const res = await fetch(
-    `${process.env.SUPABASE_URL}/rest/v1/CustomerRecordInformation?id=eq.${recordId}`,
-    {
-      headers: new Headers({
-        apikey: String(process.env.SUPABASE_API_KEY),
-      }),
-    }
-  )
-
-  if (!res.ok) {
-    throw new Error('Failed to fetch data in server')
-  }
-
-  const data: CustomerRecordInformation[] = await res.json()
-  return data[0]
-}
+import { cookies } from 'next/headers'
 
 export default async function RecordInformationTable({
   recordId,
 }: {
   recordId: string
 }) {
-  const data = await fetchCustomerInfo(recordId)
+  const supabase = createServerComponentClient<Database>({
+    cookies,
+  })
+  const { data: records } = await supabase
+    .from('CustomerRecordInformation')
+    .select()
+    .eq('id', recordId ?? '')
+  if (!records) return null
   return (
     <div className="flex h-screen items-center">
       <div className="record grid-cols-20 bg-gray border-gray grid grow grid-rows-1 gap-px border">
@@ -45,35 +33,35 @@ export default async function RecordInformationTable({
           styles="day col-start-4 row-start-1"
         />
         <RecordInformationTableItem
-          text={`時間：${data?.elapsed_time ?? ''}`}
+          text={`時間：${records[0].elapsed_time ?? ''}`}
           styles="time col-start-5 row-start-1 col-span-4"
         />
         <RecordInformationTableItem
-          text={`前回の持ち具合：${data?.previous_condition ?? ''}`}
+          text={`前回の持ち具合：${records[0]?.previous_condition ?? ''}`}
           styles="lastStatus col-span-12 col-start-[9] row-start-1"
         />
         <RecordInformationTableItem
-          text={data ? dayjs(data.visit_date).format('YYYY') : ''}
+          text={records[0] ? dayjs(records[0].visit_date).format('YYYY') : ''}
           styles="yearValue col-start-1 col-span-2 row-start-2"
         />
         <RecordInformationTableItem
-          text={data ? dayjs(data.visit_date).format('MM') : ''}
+          text={records[0] ? dayjs(records[0].visit_date).format('MM') : ''}
           styles="monthValue col-star:t-3 row-start-2"
         />
         <RecordInformationTableItem
-          text={data ? dayjs(data?.visit_date).format('DD') : ''}
+          text={records[0] ? dayjs(records[0]?.visit_date).format('DD') : ''}
           styles="dayValue col-start-4 row-start-2"
         />
         <RecordInformationTableItem
-          text={`フィル× ${data?.fill ?? ''}`}
+          text={`フィル× ${records[0]?.fill ?? ''}`}
           styles="fill col-start-5 col-span-4 row-start-2"
         />
         <RecordInformationTableItem
-          text={`プライマー：${data?.primer ? '有' : '無'}`}
+          text={`プライマー：${records[0]?.primer ? '有' : '無'}`}
           styles="primer col-start-[9] col-span-12 row-start-2"
         />
         <RecordInformationTableItem
-          text={`周期：${data?.cycle ?? ''}`}
+          text={`周期：${records[0]?.cycle ?? ''}`}
           styles="cycle col-span-4 col-start-1 row-start-3"
         />
         <RecordInformationTableItem
@@ -81,7 +69,7 @@ export default async function RecordInformationTable({
           styles="gel col-span-16 col-start-5 row-start-3"
         />
         <RecordInformationTableItem
-          text={data?.target ?? ''}
+          text={records[0]?.target ?? ''}
           styles="hand col-span-4 col-start-1 row-start-4"
         />
         <RecordInformationTableItem

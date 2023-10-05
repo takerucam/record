@@ -8,7 +8,9 @@ export default async function AuthLayout({
 }: {
   children: React.ReactNode
 }) {
-  const supabase = createServerComponentClient<Database>({ cookies })
+  const supabase = createServerComponentClient<Database>({
+    cookies,
+  })
   const {
     data: { session },
   } = await supabase.auth.getSession()

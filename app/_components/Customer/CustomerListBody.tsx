@@ -1,39 +1,27 @@
 import CustomerCard from '@/app/_components/Customer/CustomerCard'
 import { Database } from '@/libs/database.types'
-import dayjs from 'dayjs'
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import { cookies } from 'next/headers'
 
 type CustomerList = Database['public']['Tables']['CustomerList']['Row']
 
-async function fetchCustomerList() {
-  const res = await fetch(
-    `${process.env.SUPABASE_URL}/rest/v1/CustomerList?select=*`,
-    {
-      headers: new Headers({
-        apikey: String(process.env.SUPABASE_API_KEY),
-      }),
-    }
-  )
+export default async function CustomerListBody() {
+  const supabase = createServerComponentClient<Database>({
+    cookies,
+  })
+  const { data: customerList } = await supabase.from('CustomerList').select()
 
-  if (!res.ok) {
-    throw new Error('Failed to fetch data in server')
-  }
-
-  const data: CustomerList[] = await res.json()
-  return data
-}
-
-export default async function CustomerListBody({}: {}) {
-  const CustomerList = await fetchCustomerList()
   return (
     <div className="flex justify-center overflow-auto">
       <div className="mt-12">
-        {CustomerList.map((customer: CustomerList) => {
+        {customerList?.map((customer: CustomerList) => {
           return (
-            <div key={customer.customer_id}>
+            <div key={customer.id}>
               <CustomerCard
-                customerId={customer.customer_id}
+                customerId={customer.customer_id?.toString() ?? ''}
                 name={customer.name ?? ''}
-                birthday={dayjs(customer.birthday).format('M月D日')}
+                birthday={customer.birthday}
+                id={customer.id}
               />
             </div>
           )
