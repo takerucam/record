@@ -16,6 +16,7 @@ export default async function RecordInformationTable({
     .from('CustomerRecordInformation')
     .select()
     .eq('id', recordId ?? '')
+    .single()
   if (!records) return null
   return (
     <div className="flex h-screen items-center">
@@ -33,35 +34,35 @@ export default async function RecordInformationTable({
           styles="day col-start-4 row-start-1"
         />
         <RecordInformationTableItem
-          text={`時間：${records[0].elapsed_time ?? ''}`}
+          text={`時間：${records.elapsed_time ?? ''}`}
           styles="time col-start-5 row-start-1 col-span-4"
         />
         <RecordInformationTableItem
-          text={`前回の持ち具合：${records[0]?.previous_condition ?? ''}`}
+          text={`前回の持ち具合：${records.previous_condition ?? ''}`}
           styles="lastStatus col-span-12 col-start-[9] row-start-1"
         />
         <RecordInformationTableItem
-          text={records[0] ? dayjs(records[0].visit_date).format('YYYY') : ''}
+          text={dayjs(records.visit_date).format('YYYY')}
           styles="yearValue col-start-1 col-span-2 row-start-2"
         />
         <RecordInformationTableItem
-          text={records[0] ? dayjs(records[0].visit_date).format('MM') : ''}
+          text={dayjs(records.visit_date).format('MM')}
           styles="monthValue col-star:t-3 row-start-2"
         />
         <RecordInformationTableItem
-          text={records[0] ? dayjs(records[0]?.visit_date).format('DD') : ''}
+          text={dayjs(records.visit_date).format('DD')}
           styles="dayValue col-start-4 row-start-2"
         />
         <RecordInformationTableItem
-          text={`フィル× ${records[0]?.fill ?? ''}`}
+          text={`フィル× ${records.fill}`}
           styles="fill col-start-5 col-span-4 row-start-2"
         />
         <RecordInformationTableItem
-          text={`プライマー：${records[0]?.primer ? '有' : '無'}`}
+          text={`プライマー：${records.primer ? '有' : '無'}`}
           styles="primer col-start-[9] col-span-12 row-start-2"
         />
         <RecordInformationTableItem
-          text={`周期：${records[0]?.cycle ?? ''}`}
+          text={`周期：${records.cycle}`}
           styles="cycle col-span-4 col-start-1 row-start-3"
         />
         <RecordInformationTableItem
@@ -69,7 +70,7 @@ export default async function RecordInformationTable({
           styles="gel col-span-16 col-start-5 row-start-3"
         />
         <RecordInformationTableItem
-          text={records[0]?.target ?? ''}
+          text={records.target ?? ''}
           styles="hand col-span-4 col-start-1 row-start-4"
         />
         <RecordInformationTableItem

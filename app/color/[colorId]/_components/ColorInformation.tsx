@@ -9,11 +9,12 @@ export default async function ColorInformation({ id }: { id?: string }) {
   const supabase = createServerComponentClient<Database>({
     cookies,
   })
-  const { data: colorTypes } = await supabase
+  const { data: colorType } = await supabase
     .from('ColorTypes')
     .select()
     .eq('id', id ?? '')
-  if (!colorTypes) return null
+    .single()
+  if (!colorType) return null
   return (
     <div className="relative h-full w-full pl-8 pt-16">
       <div className="absolute bottom-[88px] right-4">
@@ -24,13 +25,13 @@ export default async function ColorInformation({ id }: { id?: string }) {
       </div>
       <NailInformationItem
         title="カラー名"
-        text={`${colorTypes ? colorTypes[0].name : ''} `}
+        text={colorType.name}
         bgColor="bg-amber2"
         style="mb-4"
       />
       <NailInformationItem
         title="価格"
-        text={colorTypes[0].price?.toString() ?? ''}
+        text={colorType.price.toString()}
         bgColor="bg-amber4"
         style="mb-4"
       />

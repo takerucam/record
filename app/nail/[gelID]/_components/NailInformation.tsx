@@ -13,6 +13,7 @@ export default async function NailInformation({ id }: { id?: string }) {
     .from('GelTypes')
     .select()
     .eq('id', id ?? '')
+    .single()
   if (!gelTypes) return null
   return (
     <div className="relative h-full w-full pl-8 pt-16">
@@ -24,13 +25,13 @@ export default async function NailInformation({ id }: { id?: string }) {
       </div>
       <NailInformationItem
         title="ジェル名"
-        text={`${gelTypes ? gelTypes[0]?.name : ''} `}
+        text={gelTypes.name}
         bgColor="bg-pink2"
         style="mb-4"
       />
       <NailInformationItem
         title="価格"
-        text={gelTypes[0]?.price.toString() ?? ''}
+        text={gelTypes.price.toString()}
         bgColor="bg-pink4"
         style="mb-4"
       />

@@ -385,22 +385,22 @@ export interface Database {
         Row: {
           created_at: string | null
           id: string
-          name: string | null
-          price: number | null
+          name: string
+          price: number
           user_id: string | null
         }
         Insert: {
           created_at?: string | null
           id?: string
-          name?: string | null
-          price?: number | null
+          name: string
+          price: number
           user_id?: string | null
         }
         Update: {
           created_at?: string | null
           id?: string
-          name?: string | null
-          price?: number | null
+          name?: string
+          price?: number
           user_id?: string | null
         }
         Relationships: [

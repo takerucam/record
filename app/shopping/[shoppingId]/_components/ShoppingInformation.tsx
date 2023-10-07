@@ -14,6 +14,7 @@ export default async function ShoppingInformation({ id }: { id?: string }) {
     .from('Merchandise')
     .select()
     .eq('id', id ?? '')
+    .single()
   if (!merchandise) return null
   return (
     <div className="relative h-full w-full pl-8 pt-16">
@@ -25,13 +26,13 @@ export default async function ShoppingInformation({ id }: { id?: string }) {
       </div>
       <NailInformationItem
         title="商品名"
-        text={`${merchandise ? merchandise[0].name : ''} `}
+        text={merchandise.name}
         bgColor="bg-grass2"
         style="mb-4"
       />
       <NailInformationItem
         title="価格"
-        text={merchandise[0].price?.toString() ?? ''}
+        text={merchandise.price.toString()}
         bgColor="bg-grass4"
         style="mb-4"
       />

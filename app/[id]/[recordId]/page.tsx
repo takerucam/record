@@ -18,10 +18,10 @@ export default async function RecordPage({
     .from('CustomerList')
     .select()
     .eq('id', params.id ?? '')
-    .limit(1)
+    .single()
   if (!customerInfo) return null
 
-  const body = <RecordListBody user={customerInfo[0]} />
+  const body = <RecordListBody user={customerInfo} />
 
   return (
     <main className="bg-cyan1 h-screen">

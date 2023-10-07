@@ -14,6 +14,7 @@ export default async function CustomerInformation({ id }: { id?: string }) {
     .from('CustomerList')
     .select()
     .eq('id', id ?? '')
+    .single()
 
   if (!customerInfo) return null
   return (
@@ -26,25 +27,25 @@ export default async function CustomerInformation({ id }: { id?: string }) {
       </div>
       <CustomerInformationItem
         title="名前"
-        text={`${customerInfo ? customerInfo[0].name + ' 様' : ''} `}
+        text={`${customerInfo.name + ' 様'} `}
         bgColor="bg-cyan2"
         style="mb-4"
       />
       <CustomerInformationItem
         title="連絡先"
-        text={customerInfo[0]?.phone_number ?? ''}
+        text={customerInfo.phone_number ?? ''}
         bgColor="bg-cyan4"
         style="mb-4"
       />
       <CustomerInformationItem
         title="住所"
-        text={customerInfo[0]?.address ?? ''}
+        text={customerInfo.address ?? ''}
         bgColor="bg-cyan2"
         style="mb-4"
       />
       <CustomerInformationItem
         title="メモ"
-        text={customerInfo[0]?.memo ?? ''}
+        text={customerInfo.memo ?? ''}
         bgColor="bg-cyan4"
       />
       {customerInfo ? (
