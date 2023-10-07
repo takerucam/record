@@ -24,13 +24,13 @@ export default async function NailInformation({ id }: { id?: string }) {
       </div>
       <NailInformationItem
         title="ジェル名"
-        text={`${gelTypes ? gelTypes[0].name : ''} `}
+        text={`${gelTypes ? gelTypes[0]?.name : ''} `}
         bgColor="bg-pink2"
         style="mb-4"
       />
       <NailInformationItem
         title="価格"
-        text={gelTypes[0].price?.toString() ?? ''}
+        text={gelTypes[0]?.price.toString() ?? ''}
         bgColor="bg-pink4"
         style="mb-4"
       />

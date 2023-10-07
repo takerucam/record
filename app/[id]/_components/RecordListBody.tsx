@@ -19,8 +19,6 @@ export default async function RecordListBody({ user }: { user: CustomerList }) {
 
   if (!records) return null
 
-  console.log(records)
-
   return (
     <div className="flex flex-col items-center overflow-auto">
       <div className="flex w-[352px] items-center px-4 pb-12 pt-8">

@@ -18,8 +18,9 @@ export default async function RecordPage({
     .from('CustomerList')
     .select()
     .eq('id', params.id ?? '')
+    .limit(1)
   if (!customerInfo) return null
-  console.log(customerInfo)
+
   const body = <RecordListBody user={customerInfo[0]} />
 
   return (

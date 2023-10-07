@@ -14,7 +14,7 @@ export default async function CustomerInformation({ id }: { id?: string }) {
     .from('CustomerList')
     .select()
     .eq('id', id ?? '')
-  console.log(id)
+
   if (!customerInfo) return null
   return (
     <div className="relative h-full w-full pl-8 pt-16">
