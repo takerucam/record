@@ -1,7 +1,6 @@
-import CircleButton from '@/app/_components/common/CircleButton'
 import NailInformationItem from '@/app/nail/[gelID]/_components/NailInformationItem'
+import EditShoppingButton from '@/app/shopping/[shoppingId]/_components/EditShoppingButton'
 import { Database } from '@/libs/database.types'
-import Edit from '@/public/icons/edit.svg'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 
@@ -19,10 +18,7 @@ export default async function ShoppingInformation({ id }: { id?: string }) {
   return (
     <div className="relative h-full w-full pl-8 pt-16">
       <div className="absolute bottom-[88px] right-4">
-        <CircleButton
-          svg={<Edit width={32} height={32} fill="#FFFFFF" />}
-          bgColor="bg-grass9"
-        />
+        <EditShoppingButton merchandise={merchandise} />
       </div>
       <NailInformationItem
         title="商品名"

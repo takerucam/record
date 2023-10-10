@@ -1,7 +1,6 @@
-import CircleButton from '@/app/_components/common/CircleButton'
+import EditColorButton from '@/app/color/[colorId]/_components/EditColorButton'
 import NailInformationItem from '@/app/nail/[gelID]/_components/NailInformationItem'
 import { Database } from '@/libs/database.types'
-import Edit from '@/public/icons/edit.svg'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 
@@ -18,10 +17,7 @@ export default async function ColorInformation({ id }: { id?: string }) {
   return (
     <div className="relative h-full w-full pl-8 pt-16">
       <div className="absolute bottom-[88px] right-4">
-        <CircleButton
-          svg={<Edit width={32} height={32} fill="#FFFFFF" />}
-          bgColor="bg-amber9"
-        />
+        <EditColorButton colorType={colorType} />
       </div>
       <NailInformationItem
         title="カラー名"

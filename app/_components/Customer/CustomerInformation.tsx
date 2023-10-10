@@ -1,7 +1,6 @@
-import CircleButton from '@/app/_components/common/CircleButton'
 import CustomerInformationItem from '@/app/_components/Customer/CustomerInformationItem'
+import EditCustomerButton from '@/app/_components/Customer/EditCustomerButton'
 import { Database } from '@/libs/database.types'
-import Edit from '@/public/icons/edit.svg'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import Link from 'next/link'
@@ -20,10 +19,7 @@ export default async function CustomerInformation({ id }: { id?: string }) {
   return (
     <div className="relative h-full w-full pl-8 pt-16">
       <div className="absolute bottom-[88px] right-4">
-        <CircleButton
-          svg={<Edit width={32} height={32} fill="#FFFFFF" />}
-          bgColor="bg-cyan9"
-        />
+        <EditCustomerButton customer={customerInfo} />
       </div>
       <CustomerInformationItem
         title="名前"
