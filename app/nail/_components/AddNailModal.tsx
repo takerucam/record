@@ -4,14 +4,12 @@ import { GelTypes } from '@/app/_types/supabase'
 import supabase from '@/utils/supabase'
 import { Group, Select, TextInput } from '@mantine/core'
 import { useForm } from '@mantine/form'
-import { useRouter } from 'next/navigation'
 
 export default function AddNailModal({
   gelTypes,
 }: {
   gelTypes: GelTypes[] | null
 }) {
-  const router = useRouter()
   const uniqueTarget = gelTypes
     ?.filter(
       (value, index, self) =>
@@ -48,7 +46,6 @@ export default function AddNailModal({
       console.log(error)
     }
     form.reset()
-    router.refresh()
     window.location.reload()
   }
 

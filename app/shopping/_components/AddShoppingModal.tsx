@@ -3,11 +3,8 @@
 import supabase from '@/utils/supabase'
 import { Group, TextInput } from '@mantine/core'
 import { useForm } from '@mantine/form'
-import { useRouter } from 'next/navigation'
 
 export default function AddColorModal() {
-  const router = useRouter()
-
   const form = useForm({
     initialValues: {
       name: '',
@@ -31,7 +28,6 @@ export default function AddColorModal() {
       console.log(error)
     }
     form.reset()
-    router.refresh()
     window.location.reload()
   }
 

@@ -3,11 +3,8 @@
 import supabase from '@/utils/supabase'
 import { Group, Textarea, TextInput } from '@mantine/core'
 import { useForm } from '@mantine/form'
-import { useRouter } from 'next/navigation'
 
 export default function AddCustomerModal() {
-  const router = useRouter()
-
   const form = useForm({
     initialValues: {
       number: '',
@@ -43,7 +40,6 @@ export default function AddCustomerModal() {
       console.log(error)
     }
     form.reset()
-    router.refresh()
     window.location.reload()
   }
 
