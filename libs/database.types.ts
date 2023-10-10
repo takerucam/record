@@ -156,7 +156,7 @@ export interface Database {
           address: string | null
           birthday: string | null
           created_at: string | null
-          customer_id: number | null
+          customer_id: number
           id: string
           memo: string | null
           name: string
@@ -167,7 +167,7 @@ export interface Database {
           address?: string | null
           birthday?: string | null
           created_at?: string | null
-          customer_id?: number | null
+          customer_id: number
           id?: string
           memo?: string | null
           name: string
@@ -178,7 +178,7 @@ export interface Database {
           address?: string | null
           birthday?: string | null
           created_at?: string | null
-          customer_id?: number | null
+          customer_id?: number
           id?: string
           memo?: string | null
           name?: string
