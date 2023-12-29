@@ -2,8 +2,6 @@
 import { Database } from '@/libs/database.types'
 import { create } from 'zustand'
 
-
-
 type EditedRecord =
   Database['public']['Tables']['CustomerRecordInformation']['Row']
 
@@ -72,4 +70,3 @@ const useStore = create<State>((set) => ({
 }))
 
 export default useStore
-

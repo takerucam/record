@@ -8,12 +8,12 @@ const nextConfig = {
       test: /\.svg$/,
       use: [
         {
-          loader: '@svgr/webpack'
-        }
+          loader: '@svgr/webpack',
+        },
       ],
     })
     return config
-  }
+  },
 }
 
 export default nextConfig

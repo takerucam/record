@@ -1,4 +1,4 @@
-import RecordCard from '@/app/[id]/_components/RecordCard'
+import RecordCard from '@/app/[id]/[recordId]/_component/RecordCard'
 import { Database } from '@/libs/database.types'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import dayjs from 'dayjs'

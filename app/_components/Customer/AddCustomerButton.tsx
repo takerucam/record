@@ -1,7 +1,7 @@
 'use client'
 
 import CircleButton from '@/app/_components/common/CircleButton'
-import AddCustomerModal from '@/app/[id]/_components/AddCustomerModal'
+import AddCustomerModal from '@/app/_components/Customer/AddCustomerModal'
 import Add from '@/public/icons/add.svg'
 import { Modal } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'

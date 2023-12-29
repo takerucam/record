@@ -58,10 +58,11 @@ export interface Database {
         }
         Relationships: [
           {
-            foreignKeyName: "ColorTypes_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
+            foreignKeyName: 'ColorTypes_user_id_fkey'
+            columns: ['user_id']
+            isOneToOne: false
+            referencedRelation: 'users'
+            referencedColumns: ['id']
           }
         ]
       }
@@ -89,22 +90,25 @@ export interface Database {
         }
         Relationships: [
           {
-            foreignKeyName: "CustomerBaseGel_gel_id_fkey"
-            columns: ["gel_id"]
-            referencedRelation: "GelTypes"
-            referencedColumns: ["id"]
+            foreignKeyName: 'CustomerBaseGel_gel_id_fkey'
+            columns: ['gel_id']
+            isOneToOne: false
+            referencedRelation: 'GelTypes'
+            referencedColumns: ['id']
           },
           {
-            foreignKeyName: "CustomerBaseGel_record_id_fkey"
-            columns: ["record_id"]
-            referencedRelation: "CustomerRecordInformation"
-            referencedColumns: ["id"]
+            foreignKeyName: 'CustomerBaseGel_record_id_fkey'
+            columns: ['record_id']
+            isOneToOne: false
+            referencedRelation: 'CustomerRecordInformation'
+            referencedColumns: ['id']
           },
           {
-            foreignKeyName: "CustomerBaseGel_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
+            foreignKeyName: 'CustomerBaseGel_user_id_fkey'
+            columns: ['user_id']
+            isOneToOne: false
+            referencedRelation: 'users'
+            referencedColumns: ['id']
           }
         ]
       }
@@ -132,22 +136,25 @@ export interface Database {
         }
         Relationships: [
           {
-            foreignKeyName: "CustomerColor_color_id_fkey"
-            columns: ["color_id"]
-            referencedRelation: "ColorTypes"
-            referencedColumns: ["id"]
+            foreignKeyName: 'CustomerColor_color_id_fkey'
+            columns: ['color_id']
+            isOneToOne: false
+            referencedRelation: 'ColorTypes'
+            referencedColumns: ['id']
           },
           {
-            foreignKeyName: "CustomerColor_record_id_fkey"
-            columns: ["record_id"]
-            referencedRelation: "CustomerRecordInformation"
-            referencedColumns: ["id"]
+            foreignKeyName: 'CustomerColor_record_id_fkey'
+            columns: ['record_id']
+            isOneToOne: false
+            referencedRelation: 'CustomerRecordInformation'
+            referencedColumns: ['id']
           },
           {
-            foreignKeyName: "CustomerColor_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
+            foreignKeyName: 'CustomerColor_user_id_fkey'
+            columns: ['user_id']
+            isOneToOne: false
+            referencedRelation: 'users'
+            referencedColumns: ['id']
           }
         ]
       }
@@ -187,10 +194,57 @@ export interface Database {
         }
         Relationships: [
           {
-            foreignKeyName: "CustomerList_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
+            foreignKeyName: 'CustomerList_user_id_fkey'
+            columns: ['user_id']
+            isOneToOne: false
+            referencedRelation: 'users'
+            referencedColumns: ['id']
+          }
+        ]
+      }
+      CustomerMerchandise: {
+        Row: {
+          created_at: string | null
+          id: string
+          merchandise_id: string | null
+          record_id: string | null
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          merchandise_id?: string | null
+          record_id?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          merchandise_id?: string | null
+          record_id?: string | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'CustomerMerchandise_merchandise_id_fkey'
+            columns: ['merchandise_id']
+            isOneToOne: false
+            referencedRelation: 'Merchandise'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'CustomerMerchandise_record_id_fkey'
+            columns: ['record_id']
+            isOneToOne: false
+            referencedRelation: 'CustomerRecordInformation'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'CustomerMerchandise_user_id_fkey'
+            columns: ['user_id']
+            isOneToOne: false
+            referencedRelation: 'users'
+            referencedColumns: ['id']
           }
         ]
       }
@@ -198,7 +252,7 @@ export interface Database {
         Row: {
           conversation_content: string | null
           created_at: string | null
-          customer_id: string | null
+          customer_id: string
           cycle: number
           design_fee: number
           desired_design: string | null
@@ -218,7 +272,7 @@ export interface Database {
         Insert: {
           conversation_content?: string | null
           created_at?: string | null
-          customer_id?: string | null
+          customer_id: string
           cycle: number
           design_fee: number
           desired_design?: string | null
@@ -238,7 +292,7 @@ export interface Database {
         Update: {
           conversation_content?: string | null
           created_at?: string | null
-          customer_id?: string | null
+          customer_id?: string
           cycle?: number
           design_fee?: number
           desired_design?: string | null
@@ -257,10 +311,11 @@ export interface Database {
         }
         Relationships: [
           {
-            foreignKeyName: "CustomerRecordInformation_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
+            foreignKeyName: 'CustomerRecordInformation_user_id_fkey'
+            columns: ['user_id']
+            isOneToOne: false
+            referencedRelation: 'users'
+            referencedColumns: ['id']
           }
         ]
       }
@@ -288,22 +343,67 @@ export interface Database {
         }
         Relationships: [
           {
-            foreignKeyName: "CustomerTopGel_gel_id_fkey"
-            columns: ["gel_id"]
-            referencedRelation: "GelTypes"
-            referencedColumns: ["id"]
+            foreignKeyName: 'CustomerTopGel_gel_id_fkey'
+            columns: ['gel_id']
+            isOneToOne: false
+            referencedRelation: 'GelTypes'
+            referencedColumns: ['id']
           },
           {
-            foreignKeyName: "CustomerTopGel_record_id_fkey"
-            columns: ["record_id"]
-            referencedRelation: "CustomerRecordInformation"
-            referencedColumns: ["id"]
+            foreignKeyName: 'CustomerTopGel_record_id_fkey'
+            columns: ['record_id']
+            isOneToOne: false
+            referencedRelation: 'CustomerRecordInformation'
+            referencedColumns: ['id']
           },
           {
-            foreignKeyName: "CustomerTopGel_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
+            foreignKeyName: 'CustomerTopGel_user_id_fkey'
+            columns: ['user_id']
+            isOneToOne: false
+            referencedRelation: 'users'
+            referencedColumns: ['id']
+          }
+        ]
+      }
+      Design: {
+        Row: {
+          created_at: string
+          id: string
+          name: string | null
+          price: number | null
+          record_id: string | null
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          name?: string | null
+          price?: number | null
+          record_id?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name?: string | null
+          price?: number | null
+          record_id?: string | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'Design_record_id_fkey'
+            columns: ['record_id']
+            isOneToOne: false
+            referencedRelation: 'CustomerRecordInformation'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'Design_user_id_fkey'
+            columns: ['user_id']
+            isOneToOne: false
+            referencedRelation: 'users'
+            referencedColumns: ['id']
           }
         ]
       }
@@ -334,16 +434,18 @@ export interface Database {
         }
         Relationships: [
           {
-            foreignKeyName: "FingerInformation_record_id_fkey"
-            columns: ["record_id"]
-            referencedRelation: "CustomerRecordInformation"
-            referencedColumns: ["id"]
+            foreignKeyName: 'FingerInformation_record_id_fkey'
+            columns: ['record_id']
+            isOneToOne: false
+            referencedRelation: 'CustomerRecordInformation'
+            referencedColumns: ['id']
           },
           {
-            foreignKeyName: "FingerInformation_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
+            foreignKeyName: 'FingerInformation_user_id_fkey'
+            columns: ['user_id']
+            isOneToOne: false
+            referencedRelation: 'users'
+            referencedColumns: ['id']
           }
         ]
       }
@@ -374,10 +476,11 @@ export interface Database {
         }
         Relationships: [
           {
-            foreignKeyName: "GelTypes_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
+            foreignKeyName: 'GelTypes_user_id_fkey'
+            columns: ['user_id']
+            isOneToOne: false
+            referencedRelation: 'users'
+            referencedColumns: ['id']
           }
         ]
       }
@@ -405,53 +508,11 @@ export interface Database {
         }
         Relationships: [
           {
-            foreignKeyName: "Merchandise_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          }
-        ]
-      }
-      RecordMerchandise: {
-        Row: {
-          created_at: string | null
-          id: string
-          merchandise_id: string | null
-          record_id: string | null
-          user_id: string | null
-        }
-        Insert: {
-          created_at?: string | null
-          id?: string
-          merchandise_id?: string | null
-          record_id?: string | null
-          user_id?: string | null
-        }
-        Update: {
-          created_at?: string | null
-          id?: string
-          merchandise_id?: string | null
-          record_id?: string | null
-          user_id?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "RecordMerchandise_merchandise_id_fkey"
-            columns: ["merchandise_id"]
-            referencedRelation: "Merchandise"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "RecordMerchandise_record_id_fkey"
-            columns: ["record_id"]
-            referencedRelation: "CustomerRecordInformation"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "RecordMerchandise_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
+            foreignKeyName: 'Merchandise_user_id_fkey'
+            columns: ['user_id']
+            isOneToOne: false
+            referencedRelation: 'users'
+            referencedColumns: ['id']
           }
         ]
       }
@@ -480,6 +541,7 @@ export interface Database {
           id: string
           name: string
           owner: string | null
+          owner_id: string | null
           public: boolean | null
           updated_at: string | null
         }
@@ -491,6 +553,7 @@ export interface Database {
           id: string
           name: string
           owner?: string | null
+          owner_id?: string | null
           public?: boolean | null
           updated_at?: string | null
         }
@@ -502,17 +565,11 @@ export interface Database {
           id?: string
           name?: string
           owner?: string | null
+          owner_id?: string | null
           public?: boolean | null
           updated_at?: string | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "buckets_owner_fkey"
-            columns: ["owner"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          }
-        ]
+        Relationships: []
       }
       migrations: {
         Row: {
@@ -544,6 +601,7 @@ export interface Database {
           metadata: Json | null
           name: string | null
           owner: string | null
+          owner_id: string | null
           path_tokens: string[] | null
           updated_at: string | null
           version: string | null
@@ -556,6 +614,7 @@ export interface Database {
           metadata?: Json | null
           name?: string | null
           owner?: string | null
+          owner_id?: string | null
           path_tokens?: string[] | null
           updated_at?: string | null
           version?: string | null
@@ -568,22 +627,18 @@ export interface Database {
           metadata?: Json | null
           name?: string | null
           owner?: string | null
+          owner_id?: string | null
           path_tokens?: string[] | null
           updated_at?: string | null
           version?: string | null
         }
         Relationships: [
           {
-            foreignKeyName: "objects_bucketId_fkey"
-            columns: ["bucket_id"]
-            referencedRelation: "buckets"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "objects_owner_fkey"
-            columns: ["owner"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
+            foreignKeyName: 'objects_bucketId_fkey'
+            columns: ['bucket_id']
+            isOneToOne: false
+            referencedRelation: 'buckets'
+            referencedColumns: ['id']
           }
         ]
       }
@@ -655,3 +710,83 @@ export interface Database {
     }
   }
 }
+
+export type Tables<
+  PublicTableNameOrOptions extends
+    | keyof (Database['public']['Tables'] & Database['public']['Views'])
+    | { schema: keyof Database },
+  TableName extends PublicTableNameOrOptions extends { schema: keyof Database }
+    ? keyof (Database[PublicTableNameOrOptions['schema']]['Tables'] &
+        Database[PublicTableNameOrOptions['schema']]['Views'])
+    : never = never
+> = PublicTableNameOrOptions extends { schema: keyof Database }
+  ? (Database[PublicTableNameOrOptions['schema']]['Tables'] &
+      Database[PublicTableNameOrOptions['schema']]['Views'])[TableName] extends {
+      Row: infer R
+    }
+    ? R
+    : never
+  : PublicTableNameOrOptions extends keyof (Database['public']['Tables'] &
+      Database['public']['Views'])
+  ? (Database['public']['Tables'] &
+      Database['public']['Views'])[PublicTableNameOrOptions] extends {
+      Row: infer R
+    }
+    ? R
+    : never
+  : never
+
+export type TablesInsert<
+  PublicTableNameOrOptions extends
+    | keyof Database['public']['Tables']
+    | { schema: keyof Database },
+  TableName extends PublicTableNameOrOptions extends { schema: keyof Database }
+    ? keyof Database[PublicTableNameOrOptions['schema']]['Tables']
+    : never = never
+> = PublicTableNameOrOptions extends { schema: keyof Database }
+  ? Database[PublicTableNameOrOptions['schema']]['Tables'][TableName] extends {
+      Insert: infer I
+    }
+    ? I
+    : never
+  : PublicTableNameOrOptions extends keyof Database['public']['Tables']
+  ? Database['public']['Tables'][PublicTableNameOrOptions] extends {
+      Insert: infer I
+    }
+    ? I
+    : never
+  : never
+
+export type TablesUpdate<
+  PublicTableNameOrOptions extends
+    | keyof Database['public']['Tables']
+    | { schema: keyof Database },
+  TableName extends PublicTableNameOrOptions extends { schema: keyof Database }
+    ? keyof Database[PublicTableNameOrOptions['schema']]['Tables']
+    : never = never
+> = PublicTableNameOrOptions extends { schema: keyof Database }
+  ? Database[PublicTableNameOrOptions['schema']]['Tables'][TableName] extends {
+      Update: infer U
+    }
+    ? U
+    : never
+  : PublicTableNameOrOptions extends keyof Database['public']['Tables']
+  ? Database['public']['Tables'][PublicTableNameOrOptions] extends {
+      Update: infer U
+    }
+    ? U
+    : never
+  : never
+
+export type Enums<
+  PublicEnumNameOrOptions extends
+    | keyof Database['public']['Enums']
+    | { schema: keyof Database },
+  EnumName extends PublicEnumNameOrOptions extends { schema: keyof Database }
+    ? keyof Database[PublicEnumNameOrOptions['schema']]['Enums']
+    : never = never
+> = PublicEnumNameOrOptions extends { schema: keyof Database }
+  ? Database[PublicEnumNameOrOptions['schema']]['Enums'][EnumName]
+  : PublicEnumNameOrOptions extends keyof Database['public']['Enums']
+  ? Database['public']['Enums'][PublicEnumNameOrOptions]
+  : never

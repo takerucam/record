@@ -2,13 +2,7 @@
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll": true
+    "source.fixAll": "explicit"
   },
-  "cSpell.words": [
-    "apikey",
-    "mantine",
-    "nextjs",
-    "svgr",
-    "zustand"
-  ]
+  "cSpell.words": ["apikey", "mantine", "nextjs", "svgr", "upsert", "zustand"]
 }

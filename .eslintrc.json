@@ -9,12 +9,15 @@
   "plugins": ["tailwindcss"],
   "rules": {
     // "@next/next-no-img-element": "off",
-    "sort-imports": ["error", {
-      "ignoreCase": true,
-      "ignoreDeclarationSort": true,
-      "ignoreMemberSort": false,
-      "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
-    }],
+    "sort-imports": [
+      "error",
+      {
+        "ignoreCase": true,
+        "ignoreDeclarationSort": true,
+        "ignoreMemberSort": false,
+        "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
+      }
+    ],
     // "import/order": ["error", {"alphabetize": {"order": "asc"} }],
     "no-unused-vars": "warn",
     // "array-element-newline": ["error", "always"], // 配列の要素ごとに改行する
@@ -25,9 +28,9 @@
       "callees": ["cn"],
       "config": "./tailwind.config.mjs"
     },
-    "next": {"rootDir": true}
+    "next": { "rootDir": true }
   },
   "overrides": [
-    { "files": ["*.ts", "*.tsx"], "parser": "@typescript-eslint/parser"}
+    { "files": ["*.ts", "*.tsx"], "parser": "@typescript-eslint/parser" }
   ]
 }
